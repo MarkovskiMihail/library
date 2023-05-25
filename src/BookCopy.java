@@ -29,14 +29,18 @@ public class BookCopy implements Borrowable {
 	}
 
 	@Override
-	public void borrowItem() {
+	public void borrowItem() throws AvailabilityExceprion {
 		// If the book copy is not available then throw exception
+		if(!available)
+			throw new AvailabilityExceprion("book copy" + id + " of the book: " + book.getTitle() + "is not available becasue it is not available");
 		available = false;	
 	} 
 
 	@Override
-	public void returnItem() {
+	public void returnItem() throws AvailabilityExceprion {
 		// If the book copy is already available then throw exception
+		if(available)
+			throw new AvailabilityExceprion("book copy" + id + " of the book: " + book.getTitle() + "is not available becasue it is not available");
 		available = true;
 	}
 }

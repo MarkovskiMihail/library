@@ -13,11 +13,12 @@ public class Member {
 		onLoan = new ArrayList<Borrowable>();
 	}
 
-	public void borrows(Borrowable b){
+	public void borrows(Borrowable b) throws AvailabilityExceprion, LoanLimitException{
 		// if member has max on loan throw an exeption
-		
-		// if b is nor available than throw an exeption
-		
+		if (onLoan.size() == MAX_ON_LOAN)
+			new LoanLimitException("Member"+ name + "with id" + b.getId() + "cannot borrow becuase maximum reached");
+		// if b is not available than throw an exeption
+		if()
 		//
 		
 		onLoan.add(b);
